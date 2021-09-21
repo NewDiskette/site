@@ -1,3 +1,3 @@
 <?php
 
-define('BASE_URL', 'http://site/');
+define('BASE_URL', 'http://lessons_www/site/');

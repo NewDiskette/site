@@ -15,7 +15,7 @@
                     <li><a href="#">Услуги</a></li>
                     <li><a href="#"><i class="fas fa-user-alt"></i>Кабинет</a>
                         <ul>
-                            <li><a href="#">Админ панель</a></li>
+                            <li><a href="<?php echo BASE_URL . 'log.php'; ?>">Админ панель</a></li>
                             <li><a href="#">Выход</a></li>
                         </ul>
                     </li>

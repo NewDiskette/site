@@ -52,7 +52,7 @@
 
     <div class="mb-3 col-12 col-md-4">
       <button type="button" class="btn btn-secondary">Войти</button>
-      <a href="<?php echo BASE_URL . '/reg.php'; ?>">Зарегистрироваться</a>
+      <a href="<?php echo BASE_URL . 'reg.php'; ?>">Зарегистрироваться</a>
     </div>
   </form>
 </div>
