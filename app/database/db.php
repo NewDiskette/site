@@ -112,4 +112,48 @@ $arrData = [
     'password' => 'pssgq65toigfsqrfa23'
 ];
 
-insert(users, $arrData);
+//insert(users, $arrData);
+
+// Обмовление строки в таблице
+function update($table, $id, $params) {
+    global $pdo;
+    $i = 0;
+    $str = '';
+    foreach ($params as $key => $value){
+        if ($i === 0) {
+            $str = $str . $key . "=" . "'$value'";
+        } else {
+            $str = $str . ", $key" . "=" . "'$value'";
+        }
+        $i++;
+    }
+    // UPDATE `users` SET `username`='test', `password`='afhkahdg345ehg' WHERE `id`=7
+    $sql = "UPDATE $table SET $str WHERE id=$id";
+//    tt($sql);
+//    exit();
+    $query = $pdo->prepare($sql);
+    $query->execute($params);
+    dbCheckError($query);
+}
+
+$param1 =[
+    'admin' => '0',
+    'username' => 'test2',
+    'password' => 'pw567567ere3544uyte'
+];
+
+//update(users, 9, $param1);
+
+// Удаление строки в таблице
+function delete($table, $id) {
+    global $pdo;
+//    DELETE FROM `users` WHERE id=6
+    $sql = "DELETE FROM $table WHERE id = $id";
+//    tt($sql);
+//    exit();
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+}
+
+//delete(users, 6);
