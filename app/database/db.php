@@ -2,9 +2,6 @@
 
 require 'connect.php';
 
-
-
-
 function tt($value){
     echo '<pre>';
     print_r($value);
@@ -85,19 +82,34 @@ $params = [
 //tt(selectOne(users));
 
 //Запись в таблицу БД
-function insert($table) {
+function insert($table, $params) {
     global $pdo;
-    $sql = "INSERT INTO $table (`admin`, `username`, `email`, `password`) VALUES (:adm, :user, :mail, :pass)";
-    
-    $arrData = [
-        'adm' => '0',
-        'user' => '122',
-        'mail' => 'r111@re.com',
-        'pass' => 'pqtoi[qr[fa;23'
-    ];
+    $i = 0;
+    $coll = '';
+    $mask = '';
+    foreach ($params as $key => $value){
+        if ($i === 0) {
+            $coll = $coll . "$key";
+            $mask = $mask . "'$value'";
+        } else {
+            $coll = $coll . ", $key";
+            $mask = $mask . ", '$value'";
+        }
+        $i++;
+    }
+    $sql = "INSERT INTO $table ($coll) VALUES ($mask)";
+//    tt($sql);
+//    exit();
     $query = $pdo->prepare($sql);
-    $query->execute($arrData);
+    $query->execute($params);
     dbCheckError($query);
 }
 
-insert(users);
+$arrData = [
+    'admin' => '0',
+    'username' => 'andrey4322',
+    'email' => 'andr23111@re.com',
+    'password' => 'pssgq65toigfsqrfa23'
+];
+
+insert(users, $arrData);
