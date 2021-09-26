@@ -40,9 +40,13 @@ include("app/controllers/users.php");
 <div class="container reg-form">
     <form class="row justify-content-center" method="POST" action="reg.php">
     <h2>Форма регистрации</h2>
+    <div class="mb-3 col-12 col-md-4 err">
+        <p><?=$errMsg?></p>
+    </div>
+    <div class="w-100"></div>
     <div class="mb-3 col-12 col-md-4">
         <label for="formGroupExampleInput" class="form-label">Ваш логин</label>
-        <input name="login" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваш логин...">
+        <input name="login" value="<?=$login?>" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваш логин...">
     </div>
     <!-- https://getbootstrap.com/docs/4.0/layout/grid/#column-breaks -->
     <!-- Force next columns to break to new line -->
@@ -50,7 +54,7 @@ include("app/controllers/users.php");
     
     <div class="mb-3 col-12 col-md-4">
       <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input name="mail"type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="введите ваш email...">
+      <input name="email" value="<?=$email?>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="введите ваш email...">
       <div id="emailHelp" class="form-text">Ваш email адрес не будет использован для спама!</div>
     </div>
     <div class="w-100"></div>
